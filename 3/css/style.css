@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: lightgray;
+    color: black;
+}
+header {
+    background-color: darkgreen;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+section {
+    background-color: white;
+    margin: 20px;
+    padding: 20px;
+}
+
+h2 {
+    color: darkgreen;
+}
+
+h3 {
+    color: darkgreen;
+}
+
+li {
+    margin: 5px;
+}
+
+a {
+    color: darkgreen;
+}
+
+footer {
+    background-color: darkgreen;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
