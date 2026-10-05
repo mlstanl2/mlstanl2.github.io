@@ -1,0 +1,276 @@
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background-color: #f4f7f2;
+    color: #222222;
+}
+
+
+/* Header */
+
+header {
+    background-color: darkgreen;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+
+/* Navigation */
+
+nav {
+    background-color: #dce8d8;
+    text-align: center;
+    padding: 15px;
+}
+
+nav a {
+    color: darkgreen;
+    text-decoration: none;
+    margin: 10px;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+
+/* Main content */
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+h2 {
+    color: darkgreen;
+}
+
+
+/* Hero section */
+
+.hero {
+    text-align: center;
+    background-color: white;
+    padding: 40px 20px;
+}
+
+
+/* Buttons and links */
+
+.button {
+    display: inline-block;
+    background-color: darkgreen;
+    color: white;
+    padding: 10px 15px;
+    text-decoration: none;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.button:hover {
+    background-color: #245324;
+}
+
+
+/* Park card layout */
+
+.park-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.park-card {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.park-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.park-card h3 {
+    color: darkgreen;
+}
+
+
+/* Login section */
+
+.login {
+    background-color: white;
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 25px;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+}
+
+.login label {
+    display: block;
+    margin-top: 15px;
+}
+
+.login input {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+
+/* Forms */
+
+.contact-form {
+    background-color: white;
+    max-width: 600px;
+    margin: auto;
+    padding: 25px;
+    border-radius: 8px;
+}
+
+.contact-form label {
+    display: block;
+    margin-top: 15px;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+
+/* Buttons */
+
+button {
+    background-color: darkgreen;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #245324;
+}
+
+
+/* Destination pages */
+
+.destination {
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+}
+
+.destination img {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+
+
+/* Planning guide */
+
+.guide {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+
+/* Table */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+caption {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+th,
+td {
+    border: 1px solid #999999;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: darkgreen;
+    color: white;
+}
+
+
+/* Back link */
+
+.back-link {
+    display: inline-block;
+    margin-top: 30px;
+    color: darkgreen;
+}
+
+footer {
+    background-color: darkgreen;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+
+@media (min-width: 600px) {
+
+    .park-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    nav a {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+}
+
+@media (min-width: 900px) {
+
+    main {
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .park-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    header {
+        padding: 40px;
+    }
+
+}
