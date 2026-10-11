@@ -18,7 +18,7 @@ function changeContent(data) {
 
     document.getElementById("heroSection").style.setProperty(
         "--hero-img",
-        'url("img/alpineBoarding.jpg")'
+        'url("/5/img/alpineBoarding.jpg")'
     );
 
     document.getElementById("sec1Title").textContent = data.sections.overview.title;
