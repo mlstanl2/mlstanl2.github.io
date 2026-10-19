@@ -2,7 +2,6 @@
 
 const DATA_FILE = "data/destinations.json";
 
-// Creates a button that runs a function when selected.
 function createButton(label, onClick) {
     const button = document.createElement("button");
     button.type = "button";
@@ -11,13 +10,11 @@ function createButton(label, onClick) {
     return button;
 }
 
-// Clears the current park choices and navigation buttons.
 function clearPage() {
     document.getElementById("park-content").replaceChildren();
     document.getElementById("navigation-buttons").replaceChildren();
 }
 
-// Adds a heading and description to a park card.
 function createCard(title, description) {
     const card = document.createElement("article");
     card.className = "park-card";
@@ -29,7 +26,6 @@ function createCard(title, description) {
     return card;
 }
 
-// Displays the full information for one destination.
 function displayDetails(category, destination, categories) {
     clearPage();
     document.getElementById("explore-heading").textContent = destination.name;
@@ -62,7 +58,6 @@ function displayDetails(category, destination, categories) {
     navigation.append(createButton("Start Over", () => displayCategories(categories)));
 }
 
-// Displays the four destinations for the selected category.
 function displayDestinations(category, categories) {
     clearPage();
     document.getElementById("explore-heading").textContent = "Step 2: Choose a " + category.name.slice(0, -1);
@@ -76,8 +71,6 @@ function displayDestinations(category, categories) {
     }
     document.getElementById("navigation-buttons").append(createButton("Back to Park Types", () => displayCategories(categories)));
 }
-
-// Displays the four categories loaded from the JSON file.
 function displayCategories(categories) {
     clearPage();
     document.getElementById("explore-heading").textContent = "Step 1: Choose a Park Type";
@@ -90,8 +83,6 @@ function displayCategories(categories) {
         content.append(card);
     }
 }
-
-// Fetches the external JSON and handles loading failures.
 function loadDestinations() {
     const status = document.getElementById("load-status");
     fetch(DATA_FILE)
