@@ -6,43 +6,42 @@ body {
     background-color: #f4f7f2;
     color: #222222;
 }
-
-
-/* Header */
-
 header {
-    background-color: darkgreen;
+    background-color: #14532d;
     color: white;
     text-align: center;
-    padding: 30px 20px;
+    padding: 45px 20px;
 }
 
 header h1 {
     margin-bottom: 10px;
+    font-size: 36px;
 }
 
-
-/* Navigation */
+header p {
+    font-size: 17px;
+}
 
 nav {
-    background-color: #dce8d8;
-    text-align: center;
+    background-color: #e3eee2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
     padding: 15px;
 }
 
 nav a {
-    color: darkgreen;
+    color: #14532d;
     text-decoration: none;
-    margin: 10px;
+    padding: 10px 15px;
     font-weight: bold;
+    border-radius: 6px;
 }
 
 nav a:hover {
-    text-decoration: underline;
+    background-color: #c5dfc4;
 }
-
-
-/* Main content */
 
 main {
     padding: 20px;
@@ -56,17 +55,24 @@ h2 {
     color: darkgreen;
 }
 
-
-/* Hero section */
-
 .hero {
     text-align: center;
-    background-color: white;
-    padding: 40px 20px;
+    background-color: #e8f3e8;
+    padding: 60px 25px;
+    border-radius: 12px;
+    margin-bottom: 40px;
 }
 
+.hero h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
 
-/* Buttons and links */
+.hero p {
+    font-size: 17px;
+    line-height: 1.6;
+}
+
 
 .button {
     display: inline-block;
@@ -82,9 +88,6 @@ h2 {
     background-color: #245324;
 }
 
-
-/* Park card layout */
-
 .park-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -94,9 +97,15 @@ h2 {
 .park-card {
     background-color: white;
     padding: 20px;
-    border: 1px solid #cccccc;
-    border-radius: 8px;
+    border: 1px solid #dddddd;
+    border-radius: 12px;
     text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s;
+}
+
+.park-card:hover {
+    transform: translateY(-5px);
 }
 
 .park-card img {
@@ -105,12 +114,6 @@ h2 {
     object-fit: cover;
 }
 
-.park-card h3 {
-    color: darkgreen;
-}
-
-
-/* Login section */
 
 .login {
     background-color: white;
@@ -132,9 +135,6 @@ h2 {
     box-sizing: border-box;
     margin-top: 5px;
 }
-
-
-/* Forms */
 
 .contact-form {
     background-color: white;
@@ -158,9 +158,6 @@ h2 {
     box-sizing: border-box;
 }
 
-
-/* Buttons */
-
 button {
     background-color: darkgreen;
     color: white;
@@ -174,9 +171,6 @@ button {
 button:hover {
     background-color: #245324;
 }
-
-
-/* Destination pages */
 
 .destination {
     background-color: white;
@@ -192,17 +186,11 @@ button:hover {
     margin: auto;
 }
 
-
-/* Planning guide */
-
 .guide {
     background-color: white;
     padding: 20px;
     border-radius: 8px;
 }
-
-
-/* Table */
 
 table {
     width: 100%;
@@ -226,9 +214,6 @@ th {
     background-color: darkgreen;
     color: white;
 }
-
-
-/* Back link */
 
 .back-link {
     display: inline-block;
@@ -275,11 +260,8 @@ footer {
 
 }
 
-/* Stage 3: touch-friendly buttons and keyboard accessibility */
 button { min-height: 44px; font: inherit; margin-right: 10px; }
 button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 3px solid #b16d12; outline-offset: 3px; }
-nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
-nav a { display: inline-block; padding: 10px 4px; }
 #navigation-buttons { margin-top: 20px; }
 #load-status { font-weight: bold; }
 .destination { max-width: 800px; margin: auto; }
