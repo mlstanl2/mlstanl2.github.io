@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Contact Us
+  </title>
+  <link href="css/style.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <header>
+   <h1>
+    Contact Us &amp; Suggest a Park
+   </h1>
+   <p>
+    Have a park you think should be featured?
+            Send us your suggestion.
+   </p>
+  </header>
+  <nav aria-label="Main navigation">
+   <a href="index.html">
+    Home
+   </a>
+   <a href="explore.html">
+    Explore Parks
+   </a>
+   <a href="planning.html">
+    Planning Guide
+   </a>
+   <a href="contact.html">
+    Contact Us
+   </a>
+   <a href="index.html#login">
+    Log In
+   </a>
+  </nav>
+  <main>
+   <section class="contact-form">
+    <h2>
+     Suggest a Park
+    </h2>
+    <form id="suggestion-form">
+     <label for="name">
+      Name:
+     </label>
+     <input id="name" name="name" required="" type="text"/>
+     <label for="contact-email">
+      Email:
+     </label>
+     <input id="contact-email" name="email" required="" type="email"/>
+     <label for="park">
+      Park Name:
+     </label>
+     <input id="park" name="park" required="" type="text"/>
+     <label for="type">
+      Park Type:
+     </label>
+     <select id="type" name="type">
+      <option value="theme">
+       Theme Park
+      </option>
+      <option value="water">
+       Water Park
+      </option>
+      <option value="wildlife">
+       Wildlife Park
+      </option>
+      <option value="national">
+       National Park
+      </option>
+     </select>
+     <label for="message">
+      Message:
+     </label>
+     <textarea id="message" name="message" required="" rows="6"></textarea>
+     <button type="submit">
+      Submit Suggestion
+     </button>
+    </form>
+    <p id="form-status" role="status">
+    </p>
+   </section>
+  </main>
+  <footer>
+   <p>
+    &copy; 2026 McKenzie Stanley
+   </p>
+  </footer>
+  <script defer="" src="js/contact.js">
+  </script>
+ </body>
+</html>
+
