@@ -184,5 +184,7 @@ function loadDestinations() {
       );
     });
 }
-
-loadDestinations();
+requireUser((user) => {
+  currentUser = user;
+  loadDestinations();
+});
