@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Saved Parks &amp; Suggestions</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header><h1>My Saved Parks &amp; Suggestions</h1><p>Your personal park wish list and submitted suggestions.</p></header>
+<nav aria-label="Main navigation">
+<a href="index.html">Home</a><a href="explore.html">Explore Parks</a><a href="planning.html">Planning Guide</a><a href="contact.html">Contact Us</a><a href="saved.html" aria-current="page">My Saved Parks</a><a href="index.html#login">Account</a>
+</nav>
+<main>
+<p id="auth-gate" role="status">Checking your login...</p>
+<div id="protected-content" hidden>
+<p id="saved-status" role="status" aria-live="polite">Loading your saved information...</p>
+<section><h2>Parks I Want to Visit</h2><div id="saved-parks" class="park-grid"></div></section>
+<section><h2>My Park Suggestions</h2><div id="saved-suggestions" class="park-grid"></div></section>
+</div>
+</main>
+<footer><p>&copy; 2026 McKenzie Stanley</p></footer>
+<script type="module" src="js/saved.js"></script>
+</body>
+</html>
