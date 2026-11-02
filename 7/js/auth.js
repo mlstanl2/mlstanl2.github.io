@@ -10,12 +10,17 @@ import {
 
 const emailInput = document.getElementById("auth-email");
 const passwordInput = document.getElementById("auth-password");
+
 const loginButton = document.getElementById("login-btn");
 const signupButton = document.getElementById("signup-btn");
 const logoutButton = document.getElementById("logout-btn");
-const status = document.getElementById("auth-status");
 
-async function authenticate(action) {
+const status = document.getElementById("auth-status");
+const accountLinks = document.getElementById("account-links");
+
+let busy = false;
+
+async function authenticate(mode) {
   const email = emailInput.value.trim();
   const password = passwordInput.value;
 
@@ -24,44 +29,117 @@ async function authenticate(action) {
     return;
   }
 
+  if (password.length < 6) {
+    status.textContent =
+      "Password must be at least 6 characters.";
+    return;
+  }
+
+  busy = true;
   loginButton.disabled = true;
   signupButton.disabled = true;
-  status.textContent = "Please wait...";
+
+  status.textContent =
+    mode === "signup"
+      ? "Creating your account..."
+      : "Signing you in...";
 
   try {
-    if (action === "signup") {
-      await createUserWithEmailAndPassword(auth, email, password);
+    if (mode === "signup") {
+      await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
     } else {
-      await signInWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
     }
 
-    status.textContent = "Successfully signed in!";
+    passwordInput.value = "";
+
+    status.textContent =
+      "Signed in! You can now save parks and submit suggestions.";
+
   } catch (error) {
-    status.textContent = "Authentication failed: " + error.message;
+    status.textContent =
+      "Could not sign in: " + error.message;
+
   } finally {
+    busy = false;
     loginButton.disabled = false;
     signupButton.disabled = false;
   }
 }
 
-loginButton.addEventListener("click", () => authenticate("login"));
-signupButton.addEventListener("click", () => authenticate("signup"));
+loginButton.addEventListener("click", () => {
+  authenticate("login");
+});
+
+signupButton.addEventListener("click", () => {
+  authenticate("signup");
+});
 
 logoutButton.addEventListener("click", async () => {
+  logoutButton.disabled = true;
+  status.textContent = "Logging out...";
+
   try {
     await signOut(auth);
+
+    passwordInput.value = "";
     status.textContent = "You have logged out.";
+
   } catch (error) {
-    status.textContent = "Unable to log out: " + error.message;
+    status.textContent =
+      "Unable to log out: " + error.message;
+
+  } finally {
+    logoutButton.disabled = false;
   }
 });
 
 onAuthStateChanged(auth, (user) => {
-  logoutButton.hidden = !user;
 
   if (user) {
-    status.textContent = "Signed in as " + user.email;
+    logoutButton.hidden = false;
+    loginButton.hidden = true;
+    signupButton.hidden = true;
+
+    emailInput.disabled = true;
+    passwordInput.disabled = true;
+
+    if (accountLinks) {
+      accountLinks.hidden = false;
+    }
+
+    if (!busy) {
+      status.textContent =
+        "Signed in as " + user.email +
+        ". Your saved parks are available below.";
+    }
+
   } else {
-    status.textContent = "Log in or create an account to get started.";
+    logoutButton.hidden = true;
+    loginButton.hidden = false;
+    signupButton.hidden = false;
+
+    emailInput.disabled = false;
+    passwordInput.disabled = false;
+
+    if (accountLinks) {
+      accountLinks.hidden = true;
+    }
+
+    if (!busy) {
+      status.textContent =
+        "Log in or create an account to save parks and submit suggestions.";
+    }
   }
+}, (error) => {
+  status.textContent =
+    "Unable to check your login: " + error.message;
 });
