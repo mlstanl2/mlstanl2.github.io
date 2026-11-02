@@ -29,7 +29,9 @@
     <a href="index.html">Home</a>
     <a href="explore.html">Explore Parks</a>
     <a href="planning.html">Planning Guide</a>
+    <a href="saved.html">My Saved Parks</a>
     <a href="contact.html">Contact Us</a>
+    
     <a href="#login">Log In</a>
   </nav>
 
@@ -85,6 +87,15 @@
         minlength="6"
         required
       >
+      <label for="auth-password">Password</label>
+      <input
+    type="password"
+    id="auth-password"
+    placeholder="Enter your password"
+    autocomplete="current-password"
+    minlength="6"
+    required
+      >
 
       <div class="auth-buttons">
 
@@ -108,7 +119,11 @@
         aria-live="polite">
         Log in or create an account to get started.
       </p>
-
+      <p id="account-links" hidden>
+    <a class="button" href="saved.html">
+      View My Saved Parks &amp; Suggestions
+    </a>
+      </p>
     </section>
 
     <section>
