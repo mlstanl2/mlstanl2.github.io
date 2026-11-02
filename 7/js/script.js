@@ -1,5 +1,17 @@
 "use strict";
 
+import { db } from "./firebase-config.js";
+import { requireUser } from "./require-auth.js";
+
+import {
+  doc,
+  setDoc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
+
+let currentUser = null;
+
+
 const DATA_FILE = "data/destinations.json";
 
 function createButton(label, onClick) {
@@ -53,6 +65,54 @@ function displayDetails(category, destination, categories) {
         activities.append(item);
     }
     content.append(heading, activities);
+const saveStatus = document.createElement("p");
+saveStatus.setAttribute("role", "status");
+const saveButton = createButton(
+  "Save to My Parks",
+  async () => {
+    if (!currentUser) {
+      saveStatus.textContent = "Please log in first.";
+      return;
+    }
+
+    saveButton.disabled = true;
+    saveStatus.textContent =
+      "Saving park to your account...";
+
+    try {
+      const parkId = encodeURIComponent(
+        category.name + "__" + destination.name
+      );
+
+      await setDoc(
+        doc(
+          db,
+          "users",
+          currentUser.uid,
+          "savedParks",
+          parkId
+        ),
+        {
+          name: destination.name,
+          category: category.name,
+          location: destination.location,
+          savedAt: serverTimestamp()
+        }
+      );
+
+      saveStatus.textContent =
+        "Saved! Open My Saved Parks to view it.";
+    } catch (error) {
+      saveStatus.textContent =
+        "Could not save this park: " + error.message;
+    } finally {
+      saveButton.disabled = false;
+    }
+  }
+);
+
+content.append(saveButton, saveStatus);
+
     const navigation = document.getElementById("navigation-buttons");
     navigation.append(createButton("Back to " + category.name, () => displayDestinations(category, categories)));
     navigation.append(createButton("Start Over", () => displayCategories(categories)));
@@ -104,7 +164,10 @@ function loadDestinations() {
             document.getElementById("navigation-buttons").append(createButton("Retry", () => {
                 clearPage();
                 status.textContent = "Loading park information...";
-                loadDestinations();
+                requireUser((user) => {
+  currentUser = user;
+  loadDestinations();
+});
             }));
         });
 }
