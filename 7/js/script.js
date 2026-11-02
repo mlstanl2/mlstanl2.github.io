@@ -143,33 +143,46 @@ function displayCategories(categories) {
         content.append(card);
     }
 }
+
 function loadDestinations() {
-    const status = document.getElementById("load-status");
-    fetch(DATA_FILE)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Unable to load destinations.");
-            }
-            return response.json();
+  const status = document.getElementById("load-status");
+
+  status.textContent = "Loading park information...";
+
+  fetch(DATA_FILE)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Unable to load destinations.");
+      }
+
+      return response.json();
+    })
+    .then((categories) => {
+      if (!Array.isArray(categories) || categories.length === 0) {
+        throw new Error("The destination list is empty or invalid.");
+      }
+
+      status.textContent = "";
+      displayCategories(categories);
+    })
+    .catch((error) => {
+      console.error("Error loading parks:", error);
+
+      status.textContent =
+        "Park information could not be loaded. Please try again.";
+
+      const navigation =
+        document.getElementById("navigation-buttons");
+
+      navigation.replaceChildren();
+
+      navigation.append(
+        createButton("Retry", () => {
+          clearPage();
+          loadDestinations();
         })
-        .then(categories => {
-            if (!Array.isArray(categories) || categories.length === 0) {
-                throw new Error("The destination list is empty or invalid.");
-            }
-            status.textContent = "";
-            displayCategories(categories);
-        })
-        .catch(() => {
-            status.textContent = "Park information could not be loaded. Please try again.";
-            document.getElementById("navigation-buttons").append(createButton("Retry", () => {
-                clearPage();
-                status.textContent = "Loading park information...";
-                requireUser((user) => {
-  currentUser = user;
-  loadDestinations();
-});
-            }));
-        });
+      );
+    });
 }
 
 loadDestinations();
