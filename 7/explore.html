@@ -6,7 +6,7 @@
     <meta name="author" content="McKenzie Stanley">
     <title>Explore Parks</title>
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/script.js" defer>
+    <script type="module" src="js/script.js"></script>
     </script></head><body><header>
       <h1>Explore Parks</h1>
       <p>
@@ -17,10 +17,16 @@
         Home</a><a href="explore.html">
           Explore Parks</a>
       <a href="planning.html">Planning Guide</a>
+      <a href="saved.html">My Saved Parks</a>
       <a href="contact.html">Contact Us</a>
       <a href="index.html#login">Log In</a>
     </nav>
       <main>
+        <p id="auth-gate" role="status">
+  Checking your login...
+</p>
+
+<div id="protected-content" hidden>
         <section aria-labelledby="explore-heading">
           <h2 id="explore-heading">Step 1: Choose a Park Type</h2>
           <p id="explore-instructions">Select a category to explore destinations across the United States.</p>
